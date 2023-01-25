@@ -1,9 +1,9 @@
 ﻿using Cysharp.Threading.Tasks;
-using Global.Services.ServiceSDK.Advertisment.Runtime;
+using Global.Services.ServiceSDK.Advertisment.Abstract;
 using Global.Services.Updaters.Runtime.Abstract;
 using Plugins.YandexGames.Runtime;
 
-namespace Features.Global.Services.ServiceSDK.Advertisement.Yandex
+namespace Global.Services.ServiceSDK.Advertisment.Yandex
 {
     public class YandexAds : IAds
     {

@@ -33,6 +33,12 @@ namespace Global.Services.InputViews.Runtime
 
         private InputViewLogger _logger;
 
+        private bool _isLeftMouseButtonPressed;
+
+        public bool IsLeftMouseButtonPressed => _isLeftMouseButtonPressed;
+
+        public event Action DebugConsolePreformed;
+
         private void OnDestroy()
         {
             UnListen();
@@ -50,19 +56,6 @@ namespace Global.Services.InputViews.Runtime
 
             Listen();
         }
-
-        public event Action<Vector2> MovementPerformed;
-        public event Action MovementCanceled;
-        public event Action RangeAttackPerformed;
-        public event Action RangeAttackCanceled;
-        public event Action RangeAttackBreakPerformed;
-        public event Action InventoryPerformed;
-        public event Action MapPerformed;
-        public event Action SelectFirstProjectilePerformed;
-        public event Action SelectSecondProjectilePerformed;
-        public event Action SelectThirdProjectilePerformed;
-        public event Action SelectForthProjectilePerformed;
-        public event Action DebugConsolePreformed;
 
         public float GetAngleFrom(Vector2 from)
         {
@@ -100,6 +93,14 @@ namespace Global.Services.InputViews.Runtime
             return new LineResult(direction, length);
         }
 
+        public Vector2 ScreenToWorld()
+        {
+            var screenPosition = Mouse.current.position.ReadValue();
+            var worldPosition = _cameraUtils.ScreenToWorld(screenPosition);
+
+            return worldPosition;
+        }
+
         public void OnBeforeRebind()
         {
             _logger.OnBeforeRebind();
@@ -112,84 +113,27 @@ namespace Global.Services.InputViews.Runtime
 
         private void Listen()
         {
-            _gamePlay.Movement.performed += OnMovementPerformed;
-            _gamePlay.Movement.canceled += OnMovementCanceled;
-
-            _gamePlay.RangeAttack.performed += OnRangeAttackPerformed;
-            _gamePlay.RangeAttack.canceled += OnRangeAttackCanceled;
-            _gamePlay.RangeAttackBreak.performed += OnRangeAttackBreakPerformed;
-
-            _gamePlay.Inventory.performed += OnInventoryPerformed;
-
-            _gamePlay.Map.performed += OnMapPerformed;
-
+            _gamePlay.RangeAttack.performed += OnLeftMouseButtonPerformed;
+            _gamePlay.RangeAttack.canceled += OnLeftMouseButtonCanceled;
             _debug.Console.performed += OnDebugConsolePreformed;
-
-            _gamePlay.SelectFirstProjectile.performed += OnSelectFirstProjectilePerformed;
-            _gamePlay.SelectSecondProjectile.performed += OnSelectSecondProjectilePerformed;
-            _gamePlay.SelectThirdProjectile.performed += OnSelectThirdProjectilePerformed;
-            _gamePlay.SelectForthProjectile.performed += OnSelectForthProjectilePerformed;
         }
 
         private void UnListen()
         {
-            _gamePlay.Movement.performed -= OnMovementPerformed;
-            _gamePlay.Movement.canceled -= OnMovementCanceled;
-
-            _gamePlay.RangeAttack.performed -= OnRangeAttackPerformed;
-            _gamePlay.RangeAttack.canceled -= OnRangeAttackCanceled;
-            _gamePlay.RangeAttackBreak.performed -= OnRangeAttackBreakPerformed;
-
-            _gamePlay.Inventory.performed -= OnInventoryPerformed;
-
-            _gamePlay.Map.performed -= OnMapPerformed;
-
-            _gamePlay.SelectFirstProjectile.performed -= OnSelectFirstProjectilePerformed;
-            _gamePlay.SelectSecondProjectile.performed -= OnSelectSecondProjectilePerformed;
-            _gamePlay.SelectThirdProjectile.performed -= OnSelectThirdProjectilePerformed;
-            _gamePlay.SelectForthProjectile.performed -= OnSelectForthProjectilePerformed;
+            _gamePlay.RangeAttack.performed -= OnLeftMouseButtonPerformed;
+            _gamePlay.RangeAttack.canceled -= OnLeftMouseButtonCanceled;
 
             _debug.Console.performed -= OnDebugConsolePreformed;
         }
 
-        private void OnMovementPerformed(InputAction.CallbackContext context)
-        {
-            if (_constraintsStorage[InputConstraints.MovementInput] == true)
-            {
-                MovementCanceled?.Invoke();
-
-                _logger.OnInputCanceledWithConstraint(InputConstraints.MovementInput);
-                return;
-            }
-
-            var value = context.ReadValue<Vector2>();
-
-            _logger.OnMovementPressed(value);
-
-            MovementPerformed?.Invoke(value);
-        }
-
-        private void OnMovementCanceled(InputAction.CallbackContext context)
-        {
-            if (_constraintsStorage[InputConstraints.MovementInput] == true)
-            {
-                _logger.OnInputCanceledWithConstraint(InputConstraints.MovementInput);
-                return;
-            }
-
-            _logger.OnMovementCanceled();
-
-            MovementCanceled?.Invoke();
-        }
-
-        private void OnRangeAttackPerformed(InputAction.CallbackContext context)
+        private void OnLeftMouseButtonPerformed(InputAction.CallbackContext context)
         {
             if (EventSystem.current.IsPointerOverGameObject() == true)
                 return;
 
             if (_constraintsStorage[InputConstraints.AttackInput] == true)
             {
-                RangeAttackCanceled?.Invoke();
+                _isLeftMouseButtonPressed = false;
 
                 _logger.OnInputCanceledWithConstraint(InputConstraints.AttackInput);
                 return;
@@ -197,10 +141,10 @@ namespace Global.Services.InputViews.Runtime
 
             _logger.OnRangeAttackPerformed();
 
-            RangeAttackPerformed?.Invoke();
+            _isLeftMouseButtonPressed = true;
         }
 
-        private void OnRangeAttackCanceled(InputAction.CallbackContext context)
+        private void OnLeftMouseButtonCanceled(InputAction.CallbackContext context)
         {
             if (_constraintsStorage[InputConstraints.AttackInput] == true)
             {
@@ -210,67 +154,12 @@ namespace Global.Services.InputViews.Runtime
 
             _logger.OnRangeAttackCanceled();
 
-            RangeAttackCanceled?.Invoke();
-        }
-
-        private void OnRangeAttackBreakPerformed(InputAction.CallbackContext context)
-        {
-            if (_constraintsStorage[InputConstraints.AttackInput] == true)
-            {
-                _logger.OnInputCanceledWithConstraint(InputConstraints.AttackInput);
-                return;
-            }
-
-            _logger.OnRangeAttackCanceled();
-
-            RangeAttackBreakPerformed?.Invoke();
+            _isLeftMouseButtonPressed = false;
         }
 
         private void OnDebugConsolePreformed(InputAction.CallbackContext context)
         {
             DebugConsolePreformed?.Invoke();
-        }
-
-        private void OnInventoryPerformed(InputAction.CallbackContext context)
-        {
-            if (_constraintsStorage[InputConstraints.InventoryInput] == true)
-            {
-                _logger.OnInputCanceledWithConstraint(InputConstraints.InventoryInput);
-                return;
-            }
-
-            InventoryPerformed?.Invoke();
-        }
-
-        private void OnMapPerformed(InputAction.CallbackContext context)
-        {
-            if (_constraintsStorage[InputConstraints.Map] == true)
-            {
-                _logger.OnInputCanceledWithConstraint(InputConstraints.Map);
-                return;
-            }
-
-            MapPerformed?.Invoke();
-        }
-
-        private void OnSelectFirstProjectilePerformed(InputAction.CallbackContext context)
-        {
-            SelectFirstProjectilePerformed?.Invoke();
-        }
-
-        private void OnSelectSecondProjectilePerformed(InputAction.CallbackContext context)
-        {
-            SelectSecondProjectilePerformed?.Invoke();
-        }
-
-        private void OnSelectThirdProjectilePerformed(InputAction.CallbackContext context)
-        {
-            SelectThirdProjectilePerformed?.Invoke();
-        }
-
-        private void OnSelectForthProjectilePerformed(InputAction.CallbackContext context)
-        {
-            SelectForthProjectilePerformed?.Invoke();
         }
     }
 }

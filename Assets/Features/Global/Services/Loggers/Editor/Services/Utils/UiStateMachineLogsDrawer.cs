@@ -5,7 +5,7 @@ using UnityEditor;
 namespace Global.Services.Loggers.Editor.Services.Utils
 {
     [CustomPropertyDrawer(typeof(UiStateMachineLogs))]
-    public class UiStateMachineLogsDrawer : ReadonlyDictionaryPropertyDrawer
+    public class UiStateMachineLogsDrawer : ReadOnlyDictionaryPropertyDrawer
     {
         protected override bool IsCollapsed => false;
     }

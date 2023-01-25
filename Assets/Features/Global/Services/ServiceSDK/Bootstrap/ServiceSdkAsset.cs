@@ -3,7 +3,7 @@ using Cysharp.Threading.Tasks;
 using Global.Common;
 using Global.Services.Common.Abstract;
 using Global.Services.Common.Abstract.Scenes;
-using Global.Services.ServiceSDK.Advertisment.Runtime;
+using Global.Services.ServiceSDK.Advertisment.Abstract;
 using Global.Services.ServiceSDK.Authentications.Runtime;
 using Sirenix.OdinInspector;
 using UnityEngine;

@@ -6,7 +6,7 @@ namespace Global.Services.Loggers.Editor.Services.Utils
 {
     [ReadOnlyDictionaryPriority]
     [CustomPropertyDrawer(typeof(GlobalCameraLogs))]
-    public class GlobalCameraLogsDrawer : ReadonlyDictionaryPropertyDrawer
+    public class GlobalCameraLogsDrawer : ReadOnlyDictionaryPropertyDrawer
     {
         protected override bool IsCollapsed => false;
     }

@@ -1,12 +1,12 @@
 ﻿using System;
 using Common.Local.Services.Abstract.Callbacks;
+using GamePlay.Menu.Runtime;
 using GamePlay.Services.LevelCameras.Runtime;
 using GamePlay.Services.LevelLoops.Events;
 using GamePlay.Services.LevelLoops.Logs;
-using GamePlay.Services.MenuUI.Runtime;
 using Global.Services.CurrentCameras.Runtime;
 using Global.Services.MessageBrokers.Runtime;
-using Global.Services.ServiceSDK.Advertisment.Runtime;
+using Global.Services.ServiceSDK.Advertisment.Abstract;
 using UnityEngine;
 using VContainer;
 

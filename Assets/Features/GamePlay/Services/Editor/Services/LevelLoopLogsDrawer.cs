@@ -6,7 +6,7 @@ namespace GamePlay.Services.Editor.Services
 {
     [ReadOnlyDictionaryPriority]
     [CustomPropertyDrawer(typeof(LevelLoopLogs))]
-    public class LevelLoopLogsDrawer : ReadonlyDictionaryPropertyDrawer
+    public class LevelLoopLogsDrawer : ReadOnlyDictionaryPropertyDrawer
     {
         protected override bool IsCollapsed => false;
     }

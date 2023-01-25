@@ -6,7 +6,7 @@ namespace Global.Services.Loggers.Editor.Services.System
 {
     [ReadOnlyDictionaryPriority]
     [CustomPropertyDrawer(typeof(ResourcesCleanerLogs))]
-    public class ResourcesCleanerLogsDrawer : ReadonlyDictionaryPropertyDrawer
+    public class ResourcesCleanerLogsDrawer : ReadOnlyDictionaryPropertyDrawer
     {
         protected override bool IsCollapsed => false;
     }

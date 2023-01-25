@@ -6,7 +6,7 @@ namespace Global.Services.Loggers.Editor.Services
 {
     [ReadOnlyDictionaryPriority]
     [CustomPropertyDrawer(typeof(UpdaterLogs))]
-    public class UpdaterLogsDrawer : ReadonlyDictionaryPropertyDrawer
+    public class UpdaterLogsDrawer : ReadOnlyDictionaryPropertyDrawer
     {
         protected override bool IsCollapsed => false;
     }

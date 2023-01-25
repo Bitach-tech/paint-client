@@ -2,7 +2,7 @@
 using Plugins.YandexGames.Runtime;
 using UnityEngine;
 
-namespace Global.Services.ServiceSDK.Advertisment.Runtime
+namespace Global.Services.ServiceSDK.Advertisment.Abstract
 {
     [DisallowMultipleComponent]
     public class Ads : MonoBehaviour, IAds

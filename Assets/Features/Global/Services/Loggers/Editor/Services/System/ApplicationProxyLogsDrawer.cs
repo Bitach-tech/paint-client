@@ -6,7 +6,7 @@ namespace Global.Services.Loggers.Editor.Services.System
 {
     [ReadOnlyDictionaryPriority]
     [CustomPropertyDrawer(typeof(ApplicationProxyLogs))]
-    public class ApplicationProxyLogsDrawer : ReadonlyDictionaryPropertyDrawer
+    public class ApplicationProxyLogsDrawer : ReadOnlyDictionaryPropertyDrawer
     {
         protected override bool IsCollapsed => false;
     }

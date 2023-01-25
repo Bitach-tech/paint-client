@@ -2,11 +2,11 @@
 using Common.Local.ComposedSceneConfig;
 using Common.Local.Services.Abstract;
 using GamePlay.Common.Paths;
+using GamePlay.Menu.Runtime;
 using GamePlay.Services.Background.Runtime;
 using GamePlay.Services.Common.Scope;
 using GamePlay.Services.LevelCameras.Runtime;
 using GamePlay.Services.LevelLoops.Runtime;
-using GamePlay.Services.MenuUI.Runtime;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using VContainer.Unity;

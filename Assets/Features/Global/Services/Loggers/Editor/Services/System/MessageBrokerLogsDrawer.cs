@@ -6,7 +6,7 @@ namespace Global.Services.Loggers.Editor.Services.System
 {
     [ReadOnlyDictionaryPriority]
     [CustomPropertyDrawer(typeof(MessageBrokerLogs))]
-    public class MessageBrokerLogsDrawer : ReadonlyDictionaryPropertyDrawer
+    public class MessageBrokerLogsDrawer : ReadOnlyDictionaryPropertyDrawer
     {
         protected override bool IsCollapsed => false;
     }
