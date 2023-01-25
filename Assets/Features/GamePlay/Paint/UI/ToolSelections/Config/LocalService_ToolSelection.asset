@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a15d31a3ebb44e979d6177da26254eb4, type: 3}
   m_Name: LocalService_ToolSelection
   m_EditorClassIdentifier: 
+  _constraints: {fileID: 11400000, guid: ae4ee199691306342befe8bd03096dd4, type: 2}
   _scene: UI_ToolSelection

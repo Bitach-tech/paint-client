@@ -8,7 +8,7 @@ namespace GamePlay.Paint.UI.ColorSelections.Runtime
         {
             Color = color;
         }
-        
+
         public readonly ColorDefinition Color;
     }
 }

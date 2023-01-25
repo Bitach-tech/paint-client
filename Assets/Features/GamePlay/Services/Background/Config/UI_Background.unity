@@ -215,9 +215,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8da5d0fb94df0f4c99efc626d30006d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_color1: {r: 0.5566038, g: 0.128649, b: 0.3227701, a: 1}
-  m_color2: {r: 0.6037736, g: 0.17372729, b: 0.4070272, a: 1}
-  m_angle: -75
+  m_color1: {r: 0.9900419, g: 1, b: 0.9103774, a: 1}
+  m_color2: {r: 1, g: 0.995283, b: 0.8443396, a: 1}
+  m_angle: -101
   m_ignoreRatio: 1
 --- !u!1 &297947552
 GameObject:

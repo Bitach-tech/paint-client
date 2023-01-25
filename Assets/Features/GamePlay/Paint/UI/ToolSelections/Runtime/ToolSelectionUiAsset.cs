@@ -4,6 +4,7 @@ using Cysharp.Threading.Tasks;
 using GamePlay.Common.Paths;
 using Global.Services.ScenesFlow.Handling.Data;
 using Global.Services.ScenesFlow.Runtime.Abstract;
+using Global.Services.UiStateMachines.Runtime;
 using NaughtyAttributes;
 using Sirenix.OdinInspector;
 using UnityEngine;
@@ -15,6 +16,7 @@ namespace GamePlay.Paint.UI.ToolSelections.Runtime
         menuName = GamePlayAssetsPaths.ToolSelection + "Service")]
     public class ToolSelectionUiAsset : LocalServiceAsset
     {
+        [SerializeField] private UiConstraints _constraints;
         [SerializeField] [Scene] private string _scene;
 
         public override async UniTask Create(
@@ -28,6 +30,7 @@ namespace GamePlay.Paint.UI.ToolSelections.Runtime
             var root = loadResult.Searched;
 
             builder.RegisterComponent(root)
+                .WithParameter(_constraints)
                 .As<IToolSelectionUI>();
         }
     }

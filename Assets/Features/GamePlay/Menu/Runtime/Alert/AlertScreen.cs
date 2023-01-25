@@ -8,7 +8,7 @@ namespace GamePlay.Menu.Runtime.Alert
     public class AlertScreen : MonoBehaviour
     {
         [SerializeField] private AlertScreenConfigAsset _config;
-        
+
         [SerializeField] private GameObject _body;
         [SerializeField] private Button _button;
         [SerializeField] private TMP_Text _text;
@@ -18,12 +18,12 @@ namespace GamePlay.Menu.Runtime.Alert
             _text.text = _text.text.Replace("###", _config.OwnerName);
             _body.SetActive(true);
         }
-        
+
         private void OnEnable()
         {
             _button.onClick.AddListener(OnClicked);
         }
-        
+
         private void OnDisable()
         {
             _button.onClick.RemoveListener(OnClicked);

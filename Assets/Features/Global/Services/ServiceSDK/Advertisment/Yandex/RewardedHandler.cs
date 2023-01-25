@@ -14,10 +14,10 @@ namespace Global.Services.ServiceSDK.Advertisment.Yandex
             _callbacks = callbacks;
             _ads = ads;
         }
-        
+
         private readonly YandexCallbacks _callbacks;
         private readonly AdsInternal _ads;
-        
+
         private UniTaskCompletionSource<RewardAdResult> _rewardedCompletion;
 
         public async UniTask<RewardAdResult> Show()
@@ -25,14 +25,14 @@ namespace Global.Services.ServiceSDK.Advertisment.Yandex
             _callbacks.RewardedAdReward += OnRewardShowed;
             _callbacks.RewardedAdClosed += OnRewardClosed;
             _callbacks.RewardedAdError += OnRewardError;
-            
+
             _rewardedCompletion = new UniTaskCompletionSource<RewardAdResult>();
 
             _ads.ShowRewarded();
 
             var result = await _rewardedCompletion.Task;
             AudioListener.pause = false;
-            
+
             _callbacks.RewardedAdReward -= OnRewardShowed;
             _callbacks.RewardedAdClosed -= OnRewardClosed;
             _callbacks.RewardedAdError -= OnRewardError;

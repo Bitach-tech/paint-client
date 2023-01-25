@@ -19,6 +19,7 @@ MonoBehaviour:
   _background: {fileID: 11400000, guid: a85633435c8e17c469e77b530f7882cd, type: 2}
   _toolHandler: {fileID: 11400000, guid: 2ef40cd0cbcfbf142be5fe63ad5918b6, type: 2}
   _canvas: {fileID: 11400000, guid: cb63b57e079e6c14d8d8870d6014d2e6, type: 2}
-  _colorSelectionUi: {fileID: 11400000, guid: a76a2e08011a95d48ba6ed9acf534e76, type: 2}
-  _toolSelection: {fileID: 11400000, guid: e0d952dd43cef654e80f6159664e4ed3, type: 2}
+  _colorSelectionUI: {fileID: 11400000, guid: a76a2e08011a95d48ba6ed9acf534e76, type: 2}
+  _toolSelectionUI: {fileID: 11400000, guid: e0d952dd43cef654e80f6159664e4ed3, type: 2}
+  _imageStorage: {fileID: 11400000, guid: 576969333a3742240a00a29b2c3ef3b3, type: 2}
   _scopePrefab: {fileID: 6256164544057903142, guid: 739bd40898e14fe4ebe3aa07b287a0fb, type: 3}

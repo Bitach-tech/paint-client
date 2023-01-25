@@ -8,7 +8,7 @@ namespace GamePlay.Paint.UI.ToolSelections.Runtime
         {
             Tool = tool;
         }
-        
+
         public readonly ToolType Tool;
     }
 }

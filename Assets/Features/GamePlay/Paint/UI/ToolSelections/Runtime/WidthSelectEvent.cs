@@ -8,7 +8,7 @@ namespace GamePlay.Paint.UI.ToolSelections.Runtime
         {
             Width = width;
         }
-        
+
         public readonly LineWidth Width;
     }
 }

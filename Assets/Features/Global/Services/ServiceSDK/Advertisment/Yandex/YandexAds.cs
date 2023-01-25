@@ -35,7 +35,7 @@ namespace Global.Services.ServiceSDK.Advertisment.Yandex
 
             var handler = new RewardedHandler(_callbacks, _internal);
             var result = await handler.Show();
-            
+
             _speedSetter.Set(speed);
 
             return result;
@@ -48,7 +48,7 @@ namespace Global.Services.ServiceSDK.Advertisment.Yandex
 
             var handler = new InterstitialHandler(_callbacks, _internal);
             await handler.Show();
-            
+
             _speedSetter.Set(speed);
         }
     }

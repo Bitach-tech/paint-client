@@ -11,7 +11,7 @@ namespace GamePlay.Paint.UI.ToolSelections.Runtime
         [SerializeField] private WidthSelectorsDictionary _selectors;
 
         private LineWidth _current;
-        
+
         private void OnEnable()
         {
             foreach (var (width, button) in _selectors)
@@ -40,7 +40,7 @@ namespace GamePlay.Paint.UI.ToolSelections.Runtime
             _selectors[width].transform.DOScale(Vector3.zero * 1.1f, 0.3f);
 
             _current = width;
-            
+
             Msg.Publish(new WidthSelectEvent(width));
         }
     }

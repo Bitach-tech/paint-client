@@ -6,7 +6,7 @@ namespace Global.Services.InputViews.Runtime
     public interface IInputView
     {
         event Action DebugConsolePreformed;
-        
+
         bool IsLeftMouseButtonPressed { get; }
 
         float GetAngleFrom(Vector2 from);

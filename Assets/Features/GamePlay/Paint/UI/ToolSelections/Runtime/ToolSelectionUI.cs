@@ -17,7 +17,7 @@ namespace GamePlay.Paint.UI.ToolSelections.Runtime
 
         [SerializeField] private GameObject _body;
         [SerializeField] private ToolView[] _views;
-        
+
         private IUiStateMachine _uiStateMachine;
         private UiConstraints _constraints;
 
@@ -37,7 +37,7 @@ namespace GamePlay.Paint.UI.ToolSelections.Runtime
             foreach (var view in _views)
                 view.Selected -= OnToolSelected;
         }
-        
+
         public void Open()
         {
             _uiStateMachine.EnterAsStack(this);
@@ -67,7 +67,7 @@ namespace GamePlay.Paint.UI.ToolSelections.Runtime
 
             _current.Deselect();
             _current = tool;
-            
+
             Msg.Publish(new ToolSelectEvent(tool.Type));
         }
     }

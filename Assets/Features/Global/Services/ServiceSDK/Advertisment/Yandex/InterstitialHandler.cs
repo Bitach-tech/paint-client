@@ -14,12 +14,12 @@ namespace Global.Services.ServiceSDK.Advertisment.Yandex
             _callbacks = callbacks;
             _ads = ads;
         }
-        
+
         private readonly YandexCallbacks _callbacks;
         private readonly AdsInternal _ads;
 
         private UniTaskCompletionSource<InterstitialResult> _completion;
-        
+
         public async UniTask Show()
         {
             _callbacks.InterstitialShown += OnShown;
@@ -33,7 +33,7 @@ namespace Global.Services.ServiceSDK.Advertisment.Yandex
             _callbacks.InterstitialShown -= OnShown;
             _callbacks.InterstitialFailed -= OnFailed;
         }
-        
+
         private void OnShown()
         {
             _completion.TrySetResult(InterstitialResult.Success);

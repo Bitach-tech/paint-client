@@ -18,7 +18,7 @@ namespace GamePlay.Paint.Tools.Implementation.Brush.Runtime
             _factory = factory;
             _data = data;
         }
-        
+
         private readonly IUpdater _updater;
         private readonly IInputView _input;
         private readonly ILineFactory _factory;
@@ -43,7 +43,7 @@ namespace GamePlay.Paint.Tools.Implementation.Brush.Runtime
                 _current = null;
                 return;
             }
-            
+
             var position = _input.ScreenToWorld();
 
             if (_current == null)

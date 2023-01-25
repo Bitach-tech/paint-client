@@ -1,4 +1,7 @@
 ﻿{
   "name": "GamePlay.Paint.UI.ColorSelection.Editor",
-  "references":[ "GUID:d945054fb520ae0408f2ec087ffa5163", "GUID:1d6eb0fa30894be58e9df7c60bb14915" ]
+  "references": [
+    "GUID:d945054fb520ae0408f2ec087ffa5163",
+    "GUID:1d6eb0fa30894be58e9df7c60bb14915"
+  ]
 }

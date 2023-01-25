@@ -6,8 +6,7 @@ using UnityEngine.UI;
 namespace GamePlay.Paint.UI.ToolSelections.Runtime
 {
     [Serializable]
-    public class WidthSelectorsDictionary : ReadOnlyDictionary<LineWidth,Button>
+    public class WidthSelectorsDictionary : ReadOnlyDictionary<LineWidth, Button>
     {
-        
     }
 }

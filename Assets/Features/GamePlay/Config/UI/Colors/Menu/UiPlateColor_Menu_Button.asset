@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9b9584d38d74f5eb91361bb2ec53001, type: 3}
   m_Name: UiPlateColor_Menu_Button
   m_EditorClassIdentifier: 
-  _color: {r: 1, g: 0.77647066, b: 0.8235295, a: 1}
+  _color: {r: 0.99313253, g: 1, b: 0.9575472, a: 1}

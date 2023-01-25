@@ -17,7 +17,7 @@ namespace GamePlay.Paint.ImageStorage.Runtime
     {
         [SerializeField] [NestedScriptableObjectList]
         private List<PaintImage> _images;
-        
+
         [SerializeField] private ImageStorage _prefab;
 
         public override async UniTask Create(
@@ -37,7 +37,5 @@ namespace GamePlay.Paint.ImageStorage.Runtime
 
             serviceBinder.AddToModules(storage);
         }
-
-        
     }
 }

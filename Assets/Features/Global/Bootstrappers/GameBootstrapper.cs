@@ -49,7 +49,7 @@ namespace Global.Bootstrappers
             var sceneLoader = new GlobalSceneLoader();
             var callbacks = new GlobalCallbacks();
             var dependencyRegister = new ContainerBuilder();
-            
+
             var services = _services.GetAssets();
             var servicesTasks = new UniTask[services.Length];
 
@@ -71,14 +71,13 @@ namespace Global.Bootstrappers
             var scope = Instantiate(_scope);
             scope.IsRoot = true;
             binder.AddToModules(scope);
-            
+
             using (LifetimeScope.Enqueue(OnConfiguration))
             {
                 Debug.Log(5);
 
                 await UniTask.Create(async () => scope.Build());
                 Debug.Log(6);
-
             }
 
             void OnConfiguration(IContainerBuilder builder)
@@ -87,14 +86,13 @@ namespace Global.Bootstrappers
 
                 dependencyRegister.RegisterAll(builder);
                 Debug.Log(8);
-
             }
 
             Debug.Log(9);
 
-            
+
             dependencyRegister.ResolveAllWithCallbacks(scope.Container, callbacks);
-            
+
             Debug.Log(10);
 
 
@@ -107,7 +105,6 @@ namespace Global.Bootstrappers
 
             gameLoop.Begin();
             Debug.Log(13);
-
         }
     }
 }

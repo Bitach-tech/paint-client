@@ -13,7 +13,7 @@ namespace GamePlay.Paint.ImageStorage.Runtime
         {
             _images = images;
         }
-        
+
         private PaintImage[] _images;
 
         public IReadOnlyList<PaintImage> GetImages()

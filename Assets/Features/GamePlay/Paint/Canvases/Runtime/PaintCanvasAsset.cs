@@ -15,6 +15,7 @@ namespace GamePlay.Paint.Canvases.Runtime
         menuName = GamePlayAssetsPaths.PaintCanvas + "Service")]
     public class PaintCanvasAsset : LocalServiceAsset
     {
+        [SerializeField] private LineWidthConfigAsset _config;
         [SerializeField] [Scene] private string _scene;
 
         public override async UniTask Create(
@@ -28,6 +29,7 @@ namespace GamePlay.Paint.Canvases.Runtime
             var root = loadResult.Searched;
 
             builder.RegisterComponent(root.LineFactory)
+                .WithParameter(_config)
                 .As<ILineFactory>();
         }
     }

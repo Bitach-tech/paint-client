@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17fee5cad68a489d8699169e734cb7ca, type: 3}
   m_Name: LocalService_ColorSelection
   m_EditorClassIdentifier: 
+  _constraints: {fileID: 11400000, guid: d0e1f3def1fcf1e4aba783d1e0857cff, type: 2}
   _scene: UI_ColorSelection

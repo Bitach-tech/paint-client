@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afa5a0cbf51743a1ab74821ab5ec944d, type: 3}
   m_Name: LocalService_PaintCanvas
   m_EditorClassIdentifier: 
+  _config: {fileID: 11400000, guid: 5e0b9871c86bb624392a1d903e9c3bc6, type: 2}
   _scene: PaintCanvas

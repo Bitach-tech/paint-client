@@ -24,9 +24,9 @@ namespace GamePlay.Paint.Tools.Handler.Runtime
             _input = input;
             _updater = updater;
         }
-        
+
         private readonly LineData _data = new();
-        
+
         private IDisposable _toolSelectListener;
         private IDisposable _colorSelectListener;
         private IDisposable _widthSelectListener;
@@ -37,7 +37,7 @@ namespace GamePlay.Paint.Tools.Handler.Runtime
         private Brush _marker;
         private Brush _brush;
         private Brush _eraser;
-        
+
         private IUpdater _updater;
         private IInputView _input;
         private ILineFactory _factory;
@@ -69,7 +69,7 @@ namespace GamePlay.Paint.Tools.Handler.Runtime
             _data.OnToolChanged(data.Tool);
 
             _current?.Disable();
-            
+
             switch (data.Tool)
             {
                 case ToolType.Brush:
@@ -89,7 +89,7 @@ namespace GamePlay.Paint.Tools.Handler.Runtime
                 default:
                     throw new ArgumentOutOfRangeException();
             }
-            
+
             _current?.Enable();
         }
 

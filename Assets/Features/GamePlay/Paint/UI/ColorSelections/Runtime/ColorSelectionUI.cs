@@ -23,9 +23,9 @@ namespace GamePlay.Paint.UI.ColorSelections.Runtime
         [SerializeField] private GameObject _body;
 
         [SerializeField] private ColorView[] _views;
-        
+
         private ColorView _current;
-        
+
         private IUiStateMachine _uiStateMachine;
         private UiConstraints _constraints;
 
@@ -46,7 +46,7 @@ namespace GamePlay.Paint.UI.ColorSelections.Runtime
         {
             foreach (var view in _views)
                 view.Selected -= OnColorSelected;
-            
+
             _toolSelectListener?.Dispose();
         }
 
@@ -63,14 +63,14 @@ namespace GamePlay.Paint.UI.ColorSelections.Runtime
 
         public void Exit()
         {
-            _body.SetActive(false); 
+            _body.SetActive(false);
         }
-        
+
         public void Recover()
         {
             _body.SetActive(true);
         }
-        
+
         private void OnColorSelected(ColorView color)
         {
             if (_current == null)
@@ -84,7 +84,7 @@ namespace GamePlay.Paint.UI.ColorSelections.Runtime
 
             _current.Deselect();
             _current = color;
-            
+
             Msg.Publish(new ColorSelectEvent(color.Color));
         }
 

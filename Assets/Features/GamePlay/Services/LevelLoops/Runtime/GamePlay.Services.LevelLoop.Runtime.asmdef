@@ -2,8 +2,8 @@
   "name": "GamePlay.Services.LevelLoop.Runtime",
   "rootNamespace": "",
   "references": [
-    "GUID:b0214a6008ed146ff8f122a6a9c2f6cc","GUID:cdfd058b393524bddbb7e850e0d53c8e",
-    
+    "GUID:b0214a6008ed146ff8f122a6a9c2f6cc",
+    "GUID:cdfd058b393524bddbb7e850e0d53c8e",
     "GUID:f51ebe6a0ceec4240a699833d6309b23",
     "GUID:023cf439d76f82743a21c05af54cdbd9",
     "GUID:53d4551bcbb91394fbaf6bc9f0348986",

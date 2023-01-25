@@ -15,7 +15,7 @@ namespace Global.Services.SoundsPlayers.Runtime
         [SerializeField] private AudioClip _ambient;
 
         [SerializeField] private SoundsPlayer _player;
-        
+
         private IDisposable _buttonClickListener;
 
         private IDisposable _buttonTouchListener;
