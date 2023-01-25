@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace GamePlay.Menu.Runtime
+namespace GamePlay.Menu.Runtime.Alert
 {
     [DisallowMultipleComponent]
     public class AlertScreen : MonoBehaviour

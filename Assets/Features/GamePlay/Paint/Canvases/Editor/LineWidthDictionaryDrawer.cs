@@ -1,8 +1,8 @@
 ﻿using Common.ReadOnlyDictionaries.Editor;
-using GamePlay.Canvases.Runtime;
+using GamePlay.Paint.Canvases.Runtime;
 using UnityEditor;
 
-namespace GamePlay.Canvases.Editor
+namespace GamePlay.Paint.Canvases.Editor
 {
     [ReadOnlyDictionaryPriority]
     [CustomPropertyDrawer(typeof(LineWidthDictionary))]

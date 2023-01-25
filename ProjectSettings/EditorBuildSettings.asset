@@ -15,16 +15,25 @@ EditorBuildSettings:
     path: Assets/Features/Common/Local/Common/LocalServices.unity
     guid: cc74b2dbaf6f6fb478f35525e38026b0
   - enabled: 1
-    path: Assets/Features/GamePlay/Services/Background/Config/UI_Background.unity
-    guid: 1de6794e2d26a6747a493264e3dd21b9
-  - enabled: 1
-    path: Assets/Features/Global/Services/LoadingScreens/Config/UI_LoadingScreen.unity
-    guid: 81db3772e20060e4fa843bd53ffd6f6b
+    path: Assets/Features/GamePlay/Canvases/Config/PaintCanvas.unity
+    guid: f9222b82b77806f41bf5d937dca1bb68
   - enabled: 1
     path: Assets/Features/GamePlay/Menu/Config/UI_Menu.unity
     guid: 211184b564775c745a16cb548230d7ac
   - enabled: 1
     path: Assets/Features/Global/Services/Overlays/Config/UI_Overlay.unity
     guid: c61ecdc24d8f2124e9abe5fdf8eb2682
+  - enabled: 1
+    path: Assets/Features/GamePlay/Services/Background/Config/UI_Background.unity
+    guid: 1de6794e2d26a6747a493264e3dd21b9
+  - enabled: 1
+    path: Assets/Features/Global/Services/LoadingScreens/Config/UI_LoadingScreen.unity
+    guid: 81db3772e20060e4fa843bd53ffd6f6b
+  - enabled: 1
+    path: Assets/Features/GamePlay/Paint/UI/ToolSelections/Config/UI_ToolSelection.unity
+    guid: 678a0960cf34ff94bb2058c53a7d247f
+  - enabled: 1
+    path: Assets/Features/GamePlay/Paint/UI/ColorSelections/Config/UI_ColorSelection.unity
+    guid: 4f5e75af9c0cac54b8daaed05fece750
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: 5a3ed49a556d3114ebe26d284bf8363e, type: 2}

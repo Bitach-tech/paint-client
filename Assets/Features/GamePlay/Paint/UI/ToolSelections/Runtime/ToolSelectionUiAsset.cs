@@ -5,10 +5,12 @@ using GamePlay.Common.Paths;
 using Global.Services.ScenesFlow.Handling.Data;
 using Global.Services.ScenesFlow.Runtime.Abstract;
 using NaughtyAttributes;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace GamePlay.Paint.UI.ToolSelections.Runtime
 {
+    [InlineEditor]
     [CreateAssetMenu(fileName = GamePlayAssetsPaths.ServicePrefix + "ToolSelection",
         menuName = GamePlayAssetsPaths.ToolSelection + "Service")]
     public class ToolSelectionUiAsset : LocalServiceAsset

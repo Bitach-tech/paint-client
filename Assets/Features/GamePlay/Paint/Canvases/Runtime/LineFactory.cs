@@ -3,7 +3,7 @@ using GamePlay.Paint.Tools.Common.Definition;
 using UnityEngine;
 using VContainer;
 
-namespace GamePlay.Canvases.Runtime
+namespace GamePlay.Paint.Canvases.Runtime
 {
     [DisallowMultipleComponent]
     public class LineFactory : MonoBehaviour, ILineFactory

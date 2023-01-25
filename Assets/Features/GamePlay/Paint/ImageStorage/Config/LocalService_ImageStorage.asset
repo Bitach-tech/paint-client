@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3aed9a2620364bbdbe1ba5a76b6b7c15, type: 3}
+  m_Name: LocalService_ImageStorage
+  m_EditorClassIdentifier: 
+  _images:
+  - {fileID: 2960175868712346115}
+  _prefab: {fileID: 7311291299993652114, guid: a2c47b2b7ef7c144890f7a498db8f0f5, type: 3}
+--- !u!114 &2960175868712346115
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0f62d8455664822990f81cb111f9d40, type: 3}
+  m_Name: PaintImage_LocalService_ImageStorage
+  m_EditorClassIdentifier: 
+  _image: {fileID: 0}

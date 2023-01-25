@@ -3,7 +3,7 @@ using GamePlay.Common.Paths;
 using GamePlay.Paint.Tools.Common.Definition;
 using UnityEngine;
 
-namespace GamePlay.Canvases.Runtime
+namespace GamePlay.Paint.Canvases.Runtime
 {
     [CreateAssetMenu(fileName = "Config_LineWidth",
         menuName = GamePlayAssetsPaths.LineFactory + "Config")]

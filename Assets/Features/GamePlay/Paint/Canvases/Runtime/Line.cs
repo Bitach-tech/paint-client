@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace GamePlay.Canvases.Runtime
+namespace GamePlay.Paint.Canvases.Runtime
 {
     [DisallowMultipleComponent]
     [RequireComponent(typeof(LineRenderer))]

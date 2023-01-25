@@ -5,10 +5,12 @@ using GamePlay.Common.Paths;
 using Global.Services.ScenesFlow.Handling.Data;
 using Global.Services.ScenesFlow.Runtime.Abstract;
 using NaughtyAttributes;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace GamePlay.Paint.UI.ColorSelections.Runtime
 {
+    [InlineEditor]
     [CreateAssetMenu(fileName = GamePlayAssetsPaths.ServicePrefix + "ColorSelection",
         menuName = GamePlayAssetsPaths.ColorSelection + "Service")]
     public class ColorSelectionUiAsset : LocalServiceAsset

@@ -17,7 +17,9 @@
         public const string PaintCanvas = _services + "PaintCanvas/";
         public const string PaintConfig = _services + "PaintConfig/";
         public const string ColorSelection = _services + "ColorSelection/";
-        public const string ToolSelection = _services + "ColorSelection/";
+        public const string ToolSelection = _services + "ToolSelection/";
         public const string LineFactory = _services + "LineFactory/";
+        public const string ToolHandler = _services + "ToolHandler/";
+        public const string ImageStorage = _services + "ImageStorage/";
     }
 }

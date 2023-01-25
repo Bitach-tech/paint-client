@@ -3,6 +3,11 @@ using Common.Local.ComposedSceneConfig;
 using Common.Local.Services.Abstract;
 using GamePlay.Common.Paths;
 using GamePlay.Menu.Runtime;
+using GamePlay.Paint.Canvases.Runtime;
+using GamePlay.Paint.ImageStorage.Runtime;
+using GamePlay.Paint.Tools.Handler.Runtime;
+using GamePlay.Paint.UI.ColorSelections.Runtime;
+using GamePlay.Paint.UI.ToolSelections.Runtime;
 using GamePlay.Services.Background.Runtime;
 using GamePlay.Services.Common.Scope;
 using GamePlay.Services.LevelCameras.Runtime;
@@ -21,6 +26,11 @@ namespace GamePlay.Config.Services.Runtime
         [SerializeField] private LevelLoopAsset _levelLoop;
         [SerializeField] private MenuUIAsset _menuUi;
         [SerializeField] private GameBackgroundAsset _background;
+        [SerializeField] private ToolHandlerAsset _toolHandler;
+        [SerializeField] private PaintCanvasAsset _canvas;
+        [SerializeField] private ColorSelectionUiAsset _colorSelectionUI;
+        [SerializeField] private ToolSelectionUiAsset _toolSelectionUI;
+        [SerializeField] private ImageStorageAsset _imageStorage;
 
         [SerializeField] private LevelScope _scopePrefab;
 
@@ -32,6 +42,11 @@ namespace GamePlay.Config.Services.Runtime
                 _levelLoop,
                 _menuUi,
                 _background,
+                _toolHandler,
+                _canvas,
+                _colorSelectionUI,
+                _toolSelectionUI,
+                _imageStorage
             };
 
             return list.ToArray();

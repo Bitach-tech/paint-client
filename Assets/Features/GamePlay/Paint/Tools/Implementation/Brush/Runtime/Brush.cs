@@ -1,4 +1,4 @@
-﻿using GamePlay.Canvases.Runtime;
+﻿using GamePlay.Paint.Canvases.Runtime;
 using GamePlay.Paint.Tools.Implementation.Abstract;
 using Global.Services.InputViews.Runtime;
 using Global.Services.Updaters.Runtime.Abstract;
@@ -26,7 +26,7 @@ namespace GamePlay.Paint.Tools.Implementation.Brush.Runtime
 
         private ILine _current;
 
-        public void Enable(ILine line)
+        public void Enable()
         {
             _updater.Add(this);
         }
@@ -38,9 +38,18 @@ namespace GamePlay.Paint.Tools.Implementation.Brush.Runtime
 
         public void OnFixedUpdate(float delta)
         {
+            if (_input.IsLeftMouseButtonPressed == false)
+            {
+                _current = null;
+                return;
+            }
+            
             var position = _input.ScreenToWorld();
-            
-            
+
+            if (_current == null)
+                _current = _factory.Create(position, _data.Tool, _data.Width, _data.Color);
+            else
+                _current.AddPoint(position);
         }
     }
 }

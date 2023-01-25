@@ -17,11 +17,8 @@ MonoBehaviour:
   _levelLoop: {fileID: 11400000, guid: d062479df73f1744e9fcf2226501a5b7, type: 2}
   _menuUi: {fileID: 11400000, guid: 07fd34c9d670f4d48a882ff1abf30c42, type: 2}
   _background: {fileID: 11400000, guid: a85633435c8e17c469e77b530f7882cd, type: 2}
-  _quizLoop: {fileID: 11400000, guid: 15605a9aea3baea43ae79fd17ad6956d, type: 2}
-  _quizUi: {fileID: 11400000, guid: c193354439473e54cbec1d8f136dc60e, type: 2}
-  _questionsStorage: {fileID: 11400000, guid: 3c36d723aa9f63449b00ad99b58c8bd6, type: 2}
-  _score: {fileID: 11400000, guid: 4c86191a43d25df46b86008b03f435bf, type: 2}
-  _final: {fileID: 11400000, guid: cd2a04155820b1e4a9cb58c79a833c39, type: 2}
-  _health: {fileID: 11400000, guid: 55f7bf5b3a9d98242935f8849c25830d, type: 2}
-  _deathMenu: {fileID: 11400000, guid: 752c43a07993a534387a78b35fc0eafd, type: 2}
+  _toolHandler: {fileID: 11400000, guid: 2ef40cd0cbcfbf142be5fe63ad5918b6, type: 2}
+  _canvas: {fileID: 11400000, guid: cb63b57e079e6c14d8d8870d6014d2e6, type: 2}
+  _colorSelectionUi: {fileID: 11400000, guid: a76a2e08011a95d48ba6ed9acf534e76, type: 2}
+  _toolSelection: {fileID: 11400000, guid: e0d952dd43cef654e80f6159664e4ed3, type: 2}
   _scopePrefab: {fileID: 6256164544057903142, guid: 739bd40898e14fe4ebe3aa07b287a0fb, type: 3}

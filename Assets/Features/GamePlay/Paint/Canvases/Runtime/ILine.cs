@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace GamePlay.Canvases.Runtime
+namespace GamePlay.Paint.Canvases.Runtime
 {
     public interface ILine
     {

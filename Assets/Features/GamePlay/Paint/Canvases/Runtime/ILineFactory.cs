@@ -1,7 +1,7 @@
 ﻿using GamePlay.Paint.Tools.Common.Definition;
 using UnityEngine;
 
-namespace GamePlay.Canvases.Runtime
+namespace GamePlay.Paint.Canvases.Runtime
 {
     public interface ILineFactory
     {

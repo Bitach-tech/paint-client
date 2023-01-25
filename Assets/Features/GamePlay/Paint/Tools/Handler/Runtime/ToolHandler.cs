@@ -1,26 +1,54 @@
 ﻿using System;
 using Common.Local.Services.Abstract.Callbacks;
+using GamePlay.Paint.Canvases.Runtime;
 using GamePlay.Paint.Tools.Common.Definition;
 using GamePlay.Paint.Tools.Implementation.Abstract;
+using GamePlay.Paint.Tools.Implementation.Brush.Runtime;
 using GamePlay.Paint.UI.ColorSelections.Runtime;
 using GamePlay.Paint.UI.ToolSelections.Runtime;
+using Global.Services.InputViews.Runtime;
 using Global.Services.MessageBrokers.Runtime;
+using Global.Services.Updaters.Runtime.Abstract;
 using UnityEngine;
+using VContainer;
 
 namespace GamePlay.Paint.Tools.Handler.Runtime
 {
     [DisallowMultipleComponent]
-    public class ToolHandler : MonoBehaviour, ILocalSwitchListener
+    public class ToolHandler : MonoBehaviour, ILocalSwitchListener, ILocalAwakeListener
     {
+        [Inject]
+        private void Construct(IUpdater updater, IInputView input, ILineFactory factory)
+        {
+            _factory = factory;
+            _input = input;
+            _updater = updater;
+        }
+        
+        private readonly LineData _data = new();
+        
         private IDisposable _toolSelectListener;
         private IDisposable _colorSelectListener;
         private IDisposable _widthSelectListener;
 
-        private LineWidth _width;
-        private ToolType _tool;
-        private ColorDefinition _color;
+        private ITool _current;
 
-        private readonly LineData _lineData;
+        private Brush _pencil;
+        private Brush _marker;
+        private Brush _brush;
+        private Brush _eraser;
+        
+        private IUpdater _updater;
+        private IInputView _input;
+        private ILineFactory _factory;
+
+        public void OnAwake()
+        {
+            _pencil = new Brush(_updater, _input, _factory, _data);
+            _marker = new Brush(_updater, _input, _factory, _data);
+            _brush = new Brush(_updater, _input, _factory, _data);
+            _eraser = new Brush(_updater, _input, _factory, _data);
+        }
 
         public void OnEnabled()
         {
@@ -38,20 +66,41 @@ namespace GamePlay.Paint.Tools.Handler.Runtime
 
         private void OnToolSelected(ToolSelectEvent data)
         {
-            _tool = data.Tool;
-            _lineData.OnToolChanged(data.Tool);
+            _data.OnToolChanged(data.Tool);
+
+            _current?.Disable();
+            
+            switch (data.Tool)
+            {
+                case ToolType.Brush:
+                    _current = _brush;
+                    break;
+                case ToolType.Pen:
+                    _current = _pencil;
+                    break;
+                case ToolType.Marker:
+                    _current = _marker;
+                    break;
+                case ToolType.Eraser:
+                    _current = _eraser;
+                    break;
+                case ToolType.Sticker:
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+            
+            _current?.Enable();
         }
 
         private void OnColorSelected(ColorSelectEvent data)
         {
-            _color = data.Color;
-            _lineData.OnColorChanged(data.Color);
+            _data.OnColorChanged(data.Color);
         }
 
         private void OnWidthSelected(WidthSelectEvent data)
         {
-            _width = data.Width;
-            _lineData.OnWidthChanged(data.Width);
+            _data.OnWidthChanged(data.Width);
         }
     }
 }
