@@ -3,6 +3,7 @@ using GamePlay.Paint.Canvases.Runtime.Lines;
 using GamePlay.Paint.Tools.Implementation.Abstract;
 using Global.Services.InputViews.Runtime;
 using Global.Services.Updaters.Runtime.Abstract;
+using UnityEngine;
 
 namespace GamePlay.Paint.Tools.Implementation.Brush.Runtime
 {
@@ -27,6 +28,8 @@ namespace GamePlay.Paint.Tools.Implementation.Brush.Runtime
         private readonly ILineFactory _factory;
         private readonly IPaintCanvasBorders _borders;
         private readonly LineData _data;
+
+        private Vector2 _previous;
 
         private ILine _current;
 
@@ -53,10 +56,17 @@ namespace GamePlay.Paint.Tools.Implementation.Brush.Runtime
             if (_borders.IsInBorders(position) == false)
                 return;
 
+            var distance = Vector2.Distance(position, _previous);
+            
+            if (distance < 0.02f)
+                return;
+
             if (_current == null)
                 _current = _factory.Create(position, _data.Tool, _data.Width, _data.Color);
             else
                 _current.AddPoint(position);
+
+            _previous = position;
         }
     }
 }

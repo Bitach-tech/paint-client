@@ -1,8 +1,10 @@
 ﻿using System.Collections.Generic;
 using Common.Local.Services.Abstract.Callbacks;
+using Cysharp.Threading.Tasks;
 using GamePlay.Paint.ImageStorage.Runtime;
 using GamePlay.Services.Background.Runtime;
 using Global.Services.MessageBrokers.Runtime;
+using Global.Services.ServiceSDK.Advertisment.Abstract;
 using Global.Services.UiStateMachines.Runtime;
 using UnityEngine;
 using VContainer;
@@ -17,8 +19,10 @@ namespace GamePlay.Menu.Runtime
             IImageStorage storage,
             IUiStateMachine uiStateMachine,
             IGameBackground background,
+            IAds ads,
             UiConstraints constraints)
         {
+            _ads = ads;
             _background = background;
             _storage = storage;
             _uiStateMachine = uiStateMachine;
@@ -28,13 +32,15 @@ namespace GamePlay.Menu.Runtime
         [SerializeField] private PaintImageSelector _selectorPrefab;
         [SerializeField] private GameObject _body;
         [SerializeField] private Transform _selectorsRoot;
-
+        [SerializeField] private int _freeCount = 3;
+        
         private UiConstraints _constraints;
         private IUiStateMachine _uiStateMachine;
         private IImageStorage _storage;
 
         private readonly List<PaintImageSelector> _selectors = new();
         private IGameBackground _background;
+        private IAds _ads;
 
         public UiConstraints Constraints => _constraints;
         public string Name => "MainMenu";
@@ -45,10 +51,17 @@ namespace GamePlay.Menu.Runtime
 
             var images = _storage.GetImages();
 
+            var counter = 0;
+
             foreach (var image in images)
             {
+                counter++;
                 var selector = Instantiate(_selectorPrefab, _selectorsRoot);
-                selector.Construct(image);
+
+                if (counter <= _freeCount)
+                    selector.Construct(image, false);
+                else
+                    selector.Construct(image, true);
                 _selectors.Add(selector);
             }
         }
@@ -83,8 +96,16 @@ namespace GamePlay.Menu.Runtime
             _body.SetActive(false);
         }
 
-        private void OnSelected(PaintImage image)
+        private void OnSelected(PaintImage image, bool isRewardable)
         {
+            ProcessSelection(image, isRewardable).Forget();
+        }
+
+        private async UniTaskVoid ProcessSelection(PaintImage image, bool isRewardable)
+        {
+            if (isRewardable == true)
+                await _ads.ShowRewarded();
+            
             var clicked = new PlayClickEvent(image);
             Msg.Publish(clicked);
         }

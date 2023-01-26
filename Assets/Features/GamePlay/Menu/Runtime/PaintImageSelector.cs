@@ -9,11 +9,13 @@ namespace GamePlay.Menu.Runtime
     public class PaintImageSelector : MonoBehaviour
     {
         [SerializeField] private Image _image;
+        [SerializeField] private GameObject _adSign;
         [SerializeField] private Button _button;
 
         private PaintImage _current;
+        private bool _isRewardable;
 
-        public event Action<PaintImage> Selected;
+        public event Action<PaintImage, bool> Selected;
 
         private void OnEnable()
         {
@@ -25,15 +27,22 @@ namespace GamePlay.Menu.Runtime
             _button.onClick.RemoveListener(OnClicked);
         }
 
-        public void Construct(PaintImage image)
+        public void Construct(PaintImage image, bool isRewardable)
         {
+            _isRewardable = isRewardable;
             _current = image;
             _image.sprite = image.Image;
+
+            if (_isRewardable == true)
+                _adSign.SetActive(true);
         }
 
         private void OnClicked()
         {
-            Selected?.Invoke(_current);
+            _adSign.SetActive(false);
+            
+            Selected?.Invoke(_current, _isRewardable);
+            _isRewardable = false;
         }
     }
 }
