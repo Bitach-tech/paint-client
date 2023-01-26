@@ -1,6 +1,7 @@
 ﻿using System;
 using Common.Local.Services.Abstract.Callbacks;
-using GamePlay.Paint.Canvases.Runtime;
+using GamePlay.Paint.Canvases.Runtime.Borders;
+using GamePlay.Paint.Canvases.Runtime.Lines;
 using GamePlay.Paint.Tools.Common.Definition;
 using GamePlay.Paint.Tools.Implementation.Abstract;
 using GamePlay.Paint.Tools.Implementation.Brush.Runtime;
@@ -18,8 +19,13 @@ namespace GamePlay.Paint.Tools.Handler.Runtime
     public class ToolHandler : MonoBehaviour, ILocalSwitchListener, ILocalAwakeListener
     {
         [Inject]
-        private void Construct(IUpdater updater, IInputView input, ILineFactory factory)
+        private void Construct(
+            IUpdater updater,
+            IInputView input,
+            ILineFactory factory,
+            IPaintCanvasBorders borders)
         {
+            _borders = borders;
             _factory = factory;
             _input = input;
             _updater = updater;
@@ -38,16 +44,19 @@ namespace GamePlay.Paint.Tools.Handler.Runtime
         private Brush _brush;
         private Brush _eraser;
 
+        private Color _color;
+
         private IUpdater _updater;
         private IInputView _input;
         private ILineFactory _factory;
+        private IPaintCanvasBorders _borders;
 
         public void OnAwake()
         {
-            _pencil = new Brush(_updater, _input, _factory, _data);
-            _marker = new Brush(_updater, _input, _factory, _data);
-            _brush = new Brush(_updater, _input, _factory, _data);
-            _eraser = new Brush(_updater, _input, _factory, _data);
+            _pencil = new Brush(_updater, _input, _factory, _borders, _data);
+            _marker = new Brush(_updater, _input, _factory, _borders, _data);
+            _brush = new Brush(_updater, _input, _factory, _borders, _data);
+            _eraser = new Brush(_updater, _input, _factory, _borders, _data);
         }
 
         public void OnEnabled()
@@ -74,15 +83,19 @@ namespace GamePlay.Paint.Tools.Handler.Runtime
             {
                 case ToolType.Brush:
                     _current = _brush;
+                    _data.OnColorChanged(_color);
                     break;
                 case ToolType.Pen:
                     _current = _pencil;
+                    _data.OnColorChanged(_color);
                     break;
                 case ToolType.Marker:
                     _current = _marker;
+                    _data.OnColorChanged(_color);
                     break;
                 case ToolType.Eraser:
                     _current = _eraser;
+                    _data.OnColorChanged(Color.white);
                     break;
                 case ToolType.Sticker:
                     break;
@@ -95,7 +108,8 @@ namespace GamePlay.Paint.Tools.Handler.Runtime
 
         private void OnColorSelected(ColorSelectEvent data)
         {
-            _data.OnColorChanged(data.Color);
+            _data.OnColorChanged(data.Color.Color);
+            _color = data.Color.Color;
         }
 
         private void OnWidthSelected(WidthSelectEvent data)

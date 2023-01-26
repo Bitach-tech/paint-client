@@ -29,6 +29,7 @@ namespace GamePlay.Services.Background.Runtime
             var background = result.Searched;
 
             builder.RegisterComponent(background)
+                .As<IGameBackground>()
                 .AsCallbackListener();
         }
     }

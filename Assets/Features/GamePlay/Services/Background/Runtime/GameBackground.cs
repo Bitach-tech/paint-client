@@ -5,7 +5,7 @@ using VContainer;
 
 namespace GamePlay.Services.Background.Runtime
 {
-    public class GameBackground : MonoBehaviour, IUpdatable, ILocalAwakeListener
+    public class GameBackground : MonoBehaviour, IUpdatable, ILocalAwakeListener, IGameBackground
     {
         [Inject]
         private void Construct(IUpdater updater)
@@ -38,6 +38,16 @@ namespace GamePlay.Services.Background.Runtime
         {
             foreach (var line in _lines)
                 line.Update(delta);
+        }
+
+        public void Enable()
+        {
+            gameObject.SetActive(true);
+        }
+
+        public void Disable()
+        {
+            gameObject.SetActive(false);
         }
     }
 }

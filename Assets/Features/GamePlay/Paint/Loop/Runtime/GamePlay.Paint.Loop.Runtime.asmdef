@@ -1,3 +1,4 @@
 ﻿{
-  "name": "GamePlay.Paint.Loop.Runtime"
+  "name": "GamePlay.Paint.Loop.Runtime",
+  "references":[ "GUID:b0214a6008ed146ff8f122a6a9c2f6cc", "GUID:1d6eb0fa30894be58e9df7c60bb14915", "GUID:48cb762a43e14d388fee1f282c865d8d", "GUID:3165858da54f4f7eb965695cee94ecc6", "GUID:5f85ab5dc178ff54c81b21f197b82d14", "GUID:67f67dcce9d9e8a43a8e45bc1fe5534c", "GUID:f51ebe6a0ceec4240a699833d6309b23", "GUID:e07e6ccd9241474dbca4e70862df2bc2", "GUID:d49f87d10289e9340861bf05e1f156f0", "GUID:596d502774744907aa53889d8fb44675", "GUID:18e9d57ec63640c99ded4f46129f46dc" ]
 }

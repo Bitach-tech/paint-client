@@ -22,4 +22,5 @@ MonoBehaviour:
   _colorSelectionUI: {fileID: 11400000, guid: a76a2e08011a95d48ba6ed9acf534e76, type: 2}
   _toolSelectionUI: {fileID: 11400000, guid: e0d952dd43cef654e80f6159664e4ed3, type: 2}
   _imageStorage: {fileID: 11400000, guid: 576969333a3742240a00a29b2c3ef3b3, type: 2}
+  _paintLoop: {fileID: 11400000, guid: ddd7fde7132ec8c4582978df25652f4d, type: 2}
   _scopePrefab: {fileID: 6256164544057903142, guid: 739bd40898e14fe4ebe3aa07b287a0fb, type: 3}

@@ -5,6 +5,7 @@ using GamePlay.Common.Paths;
 using GamePlay.Menu.Runtime;
 using GamePlay.Paint.Canvases.Runtime;
 using GamePlay.Paint.ImageStorage.Runtime;
+using GamePlay.Paint.Loop.Runtime;
 using GamePlay.Paint.Tools.Handler.Runtime;
 using GamePlay.Paint.UI.ColorSelections.Runtime;
 using GamePlay.Paint.UI.ToolSelections.Runtime;
@@ -31,6 +32,7 @@ namespace GamePlay.Config.Services.Runtime
         [SerializeField] private ColorSelectionUiAsset _colorSelectionUI;
         [SerializeField] private ToolSelectionUiAsset _toolSelectionUI;
         [SerializeField] private ImageStorageAsset _imageStorage;
+        [SerializeField] private PaintLoopAsset _paintLoop;
 
         [SerializeField] private LevelScope _scopePrefab;
 
@@ -46,7 +48,8 @@ namespace GamePlay.Config.Services.Runtime
                 _canvas,
                 _colorSelectionUI,
                 _toolSelectionUI,
-                _imageStorage
+                _imageStorage,
+                _paintLoop
             };
 
             return list.ToArray();

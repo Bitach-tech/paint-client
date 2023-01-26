@@ -6,7 +6,7 @@ using UnityEngine.UI;
 namespace GamePlay.Paint.UI.ColorSelections.Runtime
 {
     [Serializable]
-    public class ColorViewToolsDictionary : ReadOnlyDictionary<ToolType, Image>
+    public class ColorViewToolsDictionary : ReadOnlyDictionary<ToolType, ColorToolView>
     {
     }
 }

@@ -1,5 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using Common.Local.Services.Abstract.Callbacks;
+using DG.Tweening;
+using GamePlay.Paint.Tools.Common.Definition;
 using GamePlay.Paint.UI.ToolSelections.Runtime;
 using Global.Services.MessageBrokers.Runtime;
 using Global.Services.UiStateMachines.Runtime;
@@ -9,7 +13,8 @@ using VContainer;
 namespace GamePlay.Paint.UI.ColorSelections.Runtime
 {
     [DisallowMultipleComponent]
-    public class ColorSelectionUI : MonoBehaviour, IUiState, IColorSelectionUI, ILocalSwitchListener
+    public class ColorSelectionUI : MonoBehaviour, IUiState, IColorSelectionUI, ILocalSwitchListener,
+        ILocalAwakeListener
     {
         [Inject]
         private void Construct(
@@ -22,7 +27,10 @@ namespace GamePlay.Paint.UI.ColorSelections.Runtime
 
         [SerializeField] private GameObject _body;
 
-        [SerializeField] private ColorView[] _views;
+        [SerializeField] private float _cellHeight;
+        [SerializeField] private ColorDefinition[] _colors;
+        [SerializeField] private ColorView _viewPrefab;
+        [SerializeField] private RectTransform _viewsRoot;
 
         private ColorView _current;
 
@@ -31,8 +39,25 @@ namespace GamePlay.Paint.UI.ColorSelections.Runtime
 
         private IDisposable _toolSelectListener;
 
+        private readonly List<ColorView> _views = new();
+
         public UiConstraints Constraints => _constraints;
         public string Name => "ColorSelection";
+
+        public void OnAwake()
+        {
+            foreach (var color in _colors)
+            {
+                var view = Instantiate(_viewPrefab, _viewsRoot);
+                view.Construct(color);
+
+                _views.Add(view);
+            }
+
+            _viewsRoot.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, _views.Count * _cellHeight);
+
+            _body.SetActive(false);
+        }
 
         public void OnEnabled()
         {
@@ -53,7 +78,6 @@ namespace GamePlay.Paint.UI.ColorSelections.Runtime
         public void Open()
         {
             _uiStateMachine.EnterAsStack(this);
-            _body.SetActive(true);
         }
 
         public void Close()
@@ -76,12 +100,18 @@ namespace GamePlay.Paint.UI.ColorSelections.Runtime
             if (_current == null)
             {
                 _current = color;
+                _current.transform.DOScale(Vector3.one * 1.1f, 0.1f);
+                Msg.Publish(new ColorSelectEvent(color.Color));
+                
                 return;
             }
 
             if (_current == color)
                 return;
 
+            _current.transform.DOScale(Vector3.one, 0.1f);
+            color.transform.DOScale(Vector3.one * 1.1f, 0.1f);
+            
             _current.Deselect();
             _current = color;
 
@@ -90,6 +120,32 @@ namespace GamePlay.Paint.UI.ColorSelections.Runtime
 
         private void OnToolSelected(ToolSelectEvent data)
         {
+            if (_current == null)
+            {
+                OnColorSelected(_views.First());
+            }
+            
+            switch (data.Tool)
+            {
+                case ToolType.Brush:
+                    _body.SetActive(true);
+                    break;
+                case ToolType.Pen:
+                    _body.SetActive(true);
+                    break;
+                case ToolType.Marker:
+                    _body.SetActive(true);
+                    break;
+                case ToolType.Eraser:
+                    _body.SetActive(false);
+                    break;
+                case ToolType.Sticker:
+                    _body.SetActive(false);
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+
             foreach (var view in _views)
                 view.OnToolChanged(data.Tool);
         }

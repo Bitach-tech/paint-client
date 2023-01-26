@@ -1,4 +1,5 @@
-﻿using Global.Services.MessageBrokers.Runtime;
+﻿using Common.Local.Services.Abstract.Callbacks;
+using Global.Services.MessageBrokers.Runtime;
 using Global.Services.UiStateMachines.Runtime;
 using UnityEngine;
 using VContainer;
@@ -6,7 +7,7 @@ using VContainer;
 namespace GamePlay.Paint.UI.ToolSelections.Runtime
 {
     [DisallowMultipleComponent]
-    public class ToolSelectionUI : MonoBehaviour, IUiState, IToolSelectionUI
+    public class ToolSelectionUI : MonoBehaviour, IUiState, IToolSelectionUI, ILocalAwakeListener, ILocalSwitchListener
     {
         [Inject]
         private void Construct(IUiStateMachine uiStateMachine, UiConstraints constraints)
@@ -26,13 +27,18 @@ namespace GamePlay.Paint.UI.ToolSelections.Runtime
         public UiConstraints Constraints => _constraints;
         public string Name => "ToolSelection";
 
-        private void OnEnable()
+        public void OnAwake()
+        {
+            _body.SetActive(false);
+        }
+
+        public void OnEnabled()
         {
             foreach (var view in _views)
                 view.Selected += OnToolSelected;
         }
 
-        private void OnDisable()
+        public void OnDisabled()
         {
             foreach (var view in _views)
                 view.Selected -= OnToolSelected;
@@ -59,6 +65,8 @@ namespace GamePlay.Paint.UI.ToolSelections.Runtime
             if (_current == null)
             {
                 _current = tool;
+                Msg.Publish(new ToolSelectEvent(tool.Type));
+                
                 return;
             }
 

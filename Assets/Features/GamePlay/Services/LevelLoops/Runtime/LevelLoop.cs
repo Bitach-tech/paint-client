@@ -1,6 +1,8 @@
 ﻿using System;
 using Common.Local.Services.Abstract.Callbacks;
 using GamePlay.Menu.Runtime;
+using GamePlay.Paint.ImageStorage.Runtime;
+using GamePlay.Paint.Loop.Runtime;
 using GamePlay.Services.LevelCameras.Runtime;
 using GamePlay.Services.LevelLoops.Events;
 using GamePlay.Services.LevelLoops.Logs;
@@ -23,9 +25,11 @@ namespace GamePlay.Services.LevelLoops.Runtime
             ICurrentCamera currentCamera,
             ILevelCamera levelCamera,
             IMenuUI menuUI,
+            IPaintLoop paintLoop,
             IAds ads,
             LevelLoopLogger logger)
         {
+            _paintLoop = paintLoop;
             _ads = ads;
             _menuUI = menuUI;
             _logger = logger;
@@ -43,8 +47,7 @@ namespace GamePlay.Services.LevelLoops.Runtime
         private IMenuUI _menuUI;
 
         private IDisposable _playClickListener;
-        private IDisposable _quizCompleteListener;
-        private IDisposable _restartRequestListener;
+        private IPaintLoop _paintLoop;
 
         public void OnLoaded()
         {
@@ -58,31 +61,24 @@ namespace GamePlay.Services.LevelLoops.Runtime
         public void OnEnabled()
         {
             _playClickListener = Msg.Listen<PlayClickEvent>(OnPlayClicked);
-            _restartRequestListener = Msg.Listen<RestartRequestEvent>(OnRestartRequested);
         }
 
         public void OnDisabled()
         {
             _playClickListener?.Dispose();
-            _quizCompleteListener?.Dispose();
-            _restartRequestListener?.Dispose();
         }
 
         private void OnPlayClicked(PlayClickEvent data)
         {
-            StartGame();
+            StartGame(data.Image);
         }
 
-        private void OnRestartRequested(RestartRequestEvent data)
-        {
-            StartGame();
-        }
-
-        private void StartGame()
+        private void StartGame(PaintImage image)
         {
             Msg.Publish(new GameStartEvent());
 
             _ads.ShowInterstitial();
+            _paintLoop.Open(image);
         }
     }
 }

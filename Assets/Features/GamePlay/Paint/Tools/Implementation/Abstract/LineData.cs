@@ -1,4 +1,5 @@
 ﻿using GamePlay.Paint.Tools.Common.Definition;
+using UnityEngine;
 
 namespace GamePlay.Paint.Tools.Implementation.Abstract
 {
@@ -6,11 +7,11 @@ namespace GamePlay.Paint.Tools.Implementation.Abstract
     {
         private LineWidth _width;
         private ToolType _tool;
-        private ColorDefinition _color;
+        private Color _color;
 
         public LineWidth Width => _width;
         public ToolType Tool => _tool;
-        public ColorDefinition Color => _color;
+        public Color Color => _color;
 
         public void OnWidthChanged(LineWidth width)
         {
@@ -22,7 +23,7 @@ namespace GamePlay.Paint.Tools.Implementation.Abstract
             _tool = tool;
         }
 
-        public void OnColorChanged(ColorDefinition color)
+        public void OnColorChanged(Color color)
         {
             _color = color;
         }

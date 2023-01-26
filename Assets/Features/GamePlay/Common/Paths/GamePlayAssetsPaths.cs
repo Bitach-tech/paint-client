@@ -21,5 +21,6 @@
         public const string LineFactory = _services + "LineFactory/";
         public const string ToolHandler = _services + "ToolHandler/";
         public const string ImageStorage = _services + "ImageStorage/";
+        public const string PaintLoop = _services + "PaintLoop/";
     }
 }

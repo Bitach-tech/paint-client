@@ -1,5 +1,6 @@
 ﻿using Common.ReadOnlyDictionaries.Editor;
 using GamePlay.Paint.Canvases.Runtime;
+using GamePlay.Paint.Canvases.Runtime.Lines;
 using UnityEditor;
 
 namespace GamePlay.Paint.Canvases.Editor

@@ -31,7 +31,8 @@ namespace Common.UI.UniversalPlates.Runtime.Plate
             var plateColor = new Color(
                 baseColor.r * brightness,
                 baseColor.g * brightness,
-                baseColor.b * brightness);
+                baseColor.b * brightness,
+                baseColor.a * brightness);
 
             _plate.color = plateColor;
         }

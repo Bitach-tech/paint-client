@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using Common.Local.Services.Abstract.Callbacks;
 using GamePlay.Paint.ImageStorage.Runtime;
+using GamePlay.Services.Background.Runtime;
 using Global.Services.MessageBrokers.Runtime;
 using Global.Services.UiStateMachines.Runtime;
 using UnityEngine;
@@ -15,8 +16,10 @@ namespace GamePlay.Menu.Runtime
         private void Construct(
             IImageStorage storage,
             IUiStateMachine uiStateMachine,
+            IGameBackground background,
             UiConstraints constraints)
         {
+            _background = background;
             _storage = storage;
             _uiStateMachine = uiStateMachine;
             _constraints = constraints;
@@ -31,6 +34,7 @@ namespace GamePlay.Menu.Runtime
         private IImageStorage _storage;
 
         private readonly List<PaintImageSelector> _selectors = new();
+        private IGameBackground _background;
 
         public UiConstraints Constraints => _constraints;
         public string Name => "MainMenu";
@@ -65,15 +69,18 @@ namespace GamePlay.Menu.Runtime
         {
             _uiStateMachine.EnterAsSingle(this);
             _body.SetActive(true);
+            _background.Enable();
         }
 
         public void Recover()
         {
+            _background.Enable();
             _body.SetActive(true);
         }
 
         public void Exit()
         {
+            _background.Disable();
             _body.SetActive(false);
         }
 

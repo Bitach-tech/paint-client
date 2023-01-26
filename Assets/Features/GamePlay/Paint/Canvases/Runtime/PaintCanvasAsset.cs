@@ -2,6 +2,9 @@
 using Common.Local.Services.Abstract;
 using Cysharp.Threading.Tasks;
 using GamePlay.Common.Paths;
+using GamePlay.Paint.Canvases.Runtime.Borders;
+using GamePlay.Paint.Canvases.Runtime.Lines;
+using GamePlay.Paint.Canvases.Runtime.View;
 using Global.Services.ScenesFlow.Handling.Data;
 using Global.Services.ScenesFlow.Runtime.Abstract;
 using NaughtyAttributes;
@@ -31,6 +34,12 @@ namespace GamePlay.Paint.Canvases.Runtime
             builder.RegisterComponent(root.LineFactory)
                 .WithParameter(_config)
                 .As<ILineFactory>();
+
+            builder.RegisterComponent(root.View)
+                .As<IPaintCanvasView>();
+            
+            builder.RegisterComponent(root.Borderses)
+                .As<IPaintCanvasBorders>();
         }
     }
 }

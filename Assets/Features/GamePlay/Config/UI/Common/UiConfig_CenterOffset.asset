@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5da4a7bbf2dc4917a84e5b6cd053c8e4, type: 3}
   m_Name: UiConfig_CenterOffset
   m_EditorClassIdentifier: 
-  _offset: 10.54
+  _offset: 8

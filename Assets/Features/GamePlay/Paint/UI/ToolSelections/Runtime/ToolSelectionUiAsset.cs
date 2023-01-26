@@ -31,7 +31,8 @@ namespace GamePlay.Paint.UI.ToolSelections.Runtime
 
             builder.RegisterComponent(root)
                 .WithParameter(_constraints)
-                .As<IToolSelectionUI>();
+                .As<IToolSelectionUI>()
+                .AsCallbackListener();
         }
     }
 }

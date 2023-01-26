@@ -2,6 +2,7 @@
 using GamePlay.Paint.Tools.Common.Definition;
 using Global.Services.MessageBrokers.Runtime;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace GamePlay.Paint.UI.ToolSelections.Runtime
 {
@@ -10,7 +11,7 @@ namespace GamePlay.Paint.UI.ToolSelections.Runtime
     {
         [SerializeField] private WidthSelectorsDictionary _selectors;
 
-        private LineWidth _current;
+        private Button _current;
 
         private void OnEnable()
         {
@@ -33,13 +34,15 @@ namespace GamePlay.Paint.UI.ToolSelections.Runtime
 
         private void OnWidthSelected(LineWidth width)
         {
-            if (_current == width)
+            if (_current == _selectors[width])
                 return;
 
-            _selectors[_current].transform.DOScale(Vector3.zero, 0.3f);
-            _selectors[width].transform.DOScale(Vector3.zero * 1.1f, 0.3f);
+            if (_current != null)
+                _current.transform.DOScale(Vector3.one, 0.3f);
+            
+            _selectors[width].transform.DOScale(Vector3.one * 1.1f, 0.3f);
 
-            _current = width;
+            _current = _selectors[width];
 
             Msg.Publish(new WidthSelectEvent(width));
         }

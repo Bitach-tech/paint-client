@@ -31,7 +31,8 @@ namespace GamePlay.Paint.UI.ColorSelections.Runtime
 
             builder.RegisterComponent(root)
                 .WithParameter(_constraints)
-                .As<IColorSelectionUI>();
+                .As<IColorSelectionUI>()
+                .AsCallbackListener();
         }
     }
 }
