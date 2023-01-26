@@ -34,7 +34,7 @@ namespace GamePlay.Paint.UI.ToolSelections.Runtime
 
         private void OnClicked()
         {
-            transform.DOScale(Vector3.one * 1.1f, 0.3f);
+            transform.DOScale(Vector3.one * 1.3f, 0.3f);
 
             Selected?.Invoke(this);
         }

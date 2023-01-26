@@ -80,7 +80,6 @@ namespace GamePlay.Menu.Runtime
 
         public void Exit()
         {
-            _background.Disable();
             _body.SetActive(false);
         }
 

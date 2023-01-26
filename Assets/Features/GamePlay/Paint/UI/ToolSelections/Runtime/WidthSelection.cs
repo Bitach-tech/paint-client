@@ -40,7 +40,7 @@ namespace GamePlay.Paint.UI.ToolSelections.Runtime
             if (_current != null)
                 _current.transform.DOScale(Vector3.one, 0.3f);
             
-            _selectors[width].transform.DOScale(Vector3.one * 1.1f, 0.3f);
+            _selectors[width].transform.DOScale(Vector3.one * 1.3f, 0.3f);
 
             _current = _selectors[width];
 

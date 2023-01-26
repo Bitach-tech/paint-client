@@ -47,6 +47,7 @@ namespace GamePlay.Services.LevelLoops.Runtime
         private IMenuUI _menuUI;
 
         private IDisposable _playClickListener;
+        private IDisposable _menuClickListener;
         private IPaintLoop _paintLoop;
 
         public void OnLoaded()
@@ -61,24 +62,24 @@ namespace GamePlay.Services.LevelLoops.Runtime
         public void OnEnabled()
         {
             _playClickListener = Msg.Listen<PlayClickEvent>(OnPlayClicked);
+            _menuClickListener = Msg.Listen<MenuRequestEvent>(OnMenuClicked);
         }
 
         public void OnDisabled()
         {
             _playClickListener?.Dispose();
+            _menuClickListener?.Dispose();
         }
 
         private void OnPlayClicked(PlayClickEvent data)
         {
-            StartGame(data.Image);
+            _ads.ShowInterstitial();
+            _paintLoop.Open(data.Image);
         }
 
-        private void StartGame(PaintImage image)
+        private void OnMenuClicked(MenuRequestEvent data)
         {
-            Msg.Publish(new GameStartEvent());
-
-            _ads.ShowInterstitial();
-            _paintLoop.Open(image);
+            _menuUI.Open();
         }
     }
 }

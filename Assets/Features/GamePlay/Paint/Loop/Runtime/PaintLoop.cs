@@ -50,6 +50,7 @@ namespace GamePlay.Paint.Loop.Runtime
 
         public void Exit()
         {
+            _canvasView.Disable();
         }
     }
 }

@@ -340,7 +340,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: 7
+  m_AdditionalShaderChannelsFlag: 31
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -539,7 +539,7 @@ MonoBehaviour:
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
-  m_ScrollSensitivity: 1
+  m_ScrollSensitivity: 13
   m_Viewport: {fileID: 59218773}
   m_HorizontalScrollbar: {fileID: 1434022400}
   m_VerticalScrollbar: {fileID: 1812914639}
@@ -735,7 +735,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0.00024414062}
+  m_AnchoredPosition: {x: 44, y: 0.000091552734}
   m_SizeDelta: {x: -44, y: 300}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1315103255
@@ -751,7 +751,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Padding:
-    m_Left: 30
+    m_Left: 0
     m_Right: 0
     m_Top: 30
     m_Bottom: 0
@@ -975,7 +975,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 347400671}
   m_Direction: 2
   m_Value: 0
-  m_Size: 1
+  m_Size: 0.9999866
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:

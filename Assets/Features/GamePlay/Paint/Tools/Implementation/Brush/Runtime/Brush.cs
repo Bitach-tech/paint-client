@@ -1,10 +1,8 @@
-﻿using GamePlay.Paint.Canvases.Runtime;
-using GamePlay.Paint.Canvases.Runtime.Borders;
+﻿using GamePlay.Paint.Canvases.Runtime.Borders;
 using GamePlay.Paint.Canvases.Runtime.Lines;
 using GamePlay.Paint.Tools.Implementation.Abstract;
 using Global.Services.InputViews.Runtime;
 using Global.Services.Updaters.Runtime.Abstract;
-using UnityEngine;
 
 namespace GamePlay.Paint.Tools.Implementation.Brush.Runtime
 {
@@ -27,10 +25,10 @@ namespace GamePlay.Paint.Tools.Implementation.Brush.Runtime
         private readonly IUpdater _updater;
         private readonly IInputView _input;
         private readonly ILineFactory _factory;
+        private readonly IPaintCanvasBorders _borders;
         private readonly LineData _data;
 
         private ILine _current;
-        private IPaintCanvasBorders _borders;
 
         public void Enable()
         {
