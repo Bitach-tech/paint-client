@@ -85,6 +85,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Touch",
+                    "type": "PassThrough",
+                    "id": "07b87bb3-4c5e-4d15-8d71-ff2b7e6015f8",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -239,6 +248,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "SelectForthProjectile",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7428e523-7731-471a-a8a0-0136453ae080",
+                    "path": "<Touchscreen>/primaryTouch/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Touch",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

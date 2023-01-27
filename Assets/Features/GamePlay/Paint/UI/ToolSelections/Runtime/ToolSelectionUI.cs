@@ -18,7 +18,8 @@ namespace GamePlay.Paint.UI.ToolSelections.Runtime
 
         [SerializeField] private GameObject _body;
         [SerializeField] private ToolView[] _views;
-
+        [SerializeField] private InputDebug _debug;
+        
         private IUiStateMachine _uiStateMachine;
         private UiConstraints _constraints;
 
@@ -26,6 +27,7 @@ namespace GamePlay.Paint.UI.ToolSelections.Runtime
 
         public UiConstraints Constraints => _constraints;
         public string Name => "ToolSelection";
+        public InputDebug Debug => _debug;
 
         public void OnAwake()
         {

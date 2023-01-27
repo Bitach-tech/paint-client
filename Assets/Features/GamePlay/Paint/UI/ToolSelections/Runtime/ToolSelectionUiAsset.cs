@@ -33,6 +33,8 @@ namespace GamePlay.Paint.UI.ToolSelections.Runtime
                 .WithParameter(_constraints)
                 .As<IToolSelectionUI>()
                 .AsCallbackListener();
+
+            builder.Inject(root.Debug);
         }
     }
 }

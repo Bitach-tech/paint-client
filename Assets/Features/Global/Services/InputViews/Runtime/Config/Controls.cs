@@ -107,6 +107,15 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Touch"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""07b87bb3-4c5e-4d15-8d71-ff2b7e6015f8"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -263,6 +272,17 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                     ""action"": ""SelectForthProjectile"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7428e523-7731-471a-a8a0-0136453ae080"",
+                    ""path"": ""<Touchscreen>/primaryTouch/position"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Touch"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -308,6 +328,7 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         m_GamePlay_SelectSecondProjectile = m_GamePlay.FindAction("SelectSecondProjectile", throwIfNotFound: true);
         m_GamePlay_SelectThirdProjectile = m_GamePlay.FindAction("SelectThirdProjectile", throwIfNotFound: true);
         m_GamePlay_SelectForthProjectile = m_GamePlay.FindAction("SelectForthProjectile", throwIfNotFound: true);
+        m_GamePlay_Touch = m_GamePlay.FindAction("Touch", throwIfNotFound: true);
         // Debug
         m_Debug = asset.FindActionMap("Debug", throwIfNotFound: true);
         m_Debug_Console = m_Debug.FindAction("Console", throwIfNotFound: true);
@@ -379,6 +400,7 @@ public partial class @Controls : IInputActionCollection2, IDisposable
     private readonly InputAction m_GamePlay_SelectSecondProjectile;
     private readonly InputAction m_GamePlay_SelectThirdProjectile;
     private readonly InputAction m_GamePlay_SelectForthProjectile;
+    private readonly InputAction m_GamePlay_Touch;
     public struct GamePlayActions
     {
         private @Controls m_Wrapper;
@@ -392,6 +414,7 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         public InputAction @SelectSecondProjectile => m_Wrapper.m_GamePlay_SelectSecondProjectile;
         public InputAction @SelectThirdProjectile => m_Wrapper.m_GamePlay_SelectThirdProjectile;
         public InputAction @SelectForthProjectile => m_Wrapper.m_GamePlay_SelectForthProjectile;
+        public InputAction @Touch => m_Wrapper.m_GamePlay_Touch;
         public InputActionMap Get() { return m_Wrapper.m_GamePlay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -428,6 +451,9 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                 @SelectForthProjectile.started -= m_Wrapper.m_GamePlayActionsCallbackInterface.OnSelectForthProjectile;
                 @SelectForthProjectile.performed -= m_Wrapper.m_GamePlayActionsCallbackInterface.OnSelectForthProjectile;
                 @SelectForthProjectile.canceled -= m_Wrapper.m_GamePlayActionsCallbackInterface.OnSelectForthProjectile;
+                @Touch.started -= m_Wrapper.m_GamePlayActionsCallbackInterface.OnTouch;
+                @Touch.performed -= m_Wrapper.m_GamePlayActionsCallbackInterface.OnTouch;
+                @Touch.canceled -= m_Wrapper.m_GamePlayActionsCallbackInterface.OnTouch;
             }
             m_Wrapper.m_GamePlayActionsCallbackInterface = instance;
             if (instance != null)
@@ -459,6 +485,9 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                 @SelectForthProjectile.started += instance.OnSelectForthProjectile;
                 @SelectForthProjectile.performed += instance.OnSelectForthProjectile;
                 @SelectForthProjectile.canceled += instance.OnSelectForthProjectile;
+                @Touch.started += instance.OnTouch;
+                @Touch.performed += instance.OnTouch;
+                @Touch.canceled += instance.OnTouch;
             }
         }
     }
@@ -507,6 +536,7 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         void OnSelectSecondProjectile(InputAction.CallbackContext context);
         void OnSelectThirdProjectile(InputAction.CallbackContext context);
         void OnSelectForthProjectile(InputAction.CallbackContext context);
+        void OnTouch(InputAction.CallbackContext context);
     }
     public interface IDebugActions
     {

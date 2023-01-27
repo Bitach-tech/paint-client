@@ -8,6 +8,7 @@ namespace Global.Services.InputViews.Runtime
         event Action DebugConsolePreformed;
 
         bool IsLeftMouseButtonPressed { get; }
+        Vector2 Position { get; }
 
         float GetAngleFrom(Vector2 from);
         Vector2 GetDirectionFrom(Vector2 from);

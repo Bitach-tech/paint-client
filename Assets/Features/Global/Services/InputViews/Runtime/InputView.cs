@@ -34,8 +34,10 @@ namespace Global.Services.InputViews.Runtime
         private InputViewLogger _logger;
 
         private bool _isLeftMouseButtonPressed;
+        private Vector2 _position;
 
         public bool IsLeftMouseButtonPressed => _isLeftMouseButtonPressed;
+        public Vector2 Position => _position;
 
         public event Action DebugConsolePreformed;
 
@@ -95,8 +97,7 @@ namespace Global.Services.InputViews.Runtime
 
         public Vector2 ScreenToWorld()
         {
-            var screenPosition = Mouse.current.position.ReadValue();
-            var worldPosition = _cameraUtils.ScreenToWorld(screenPosition);
+            var worldPosition = _cameraUtils.ScreenToWorld(_position);
 
             return worldPosition;
         }
@@ -115,6 +116,7 @@ namespace Global.Services.InputViews.Runtime
         {
             _gamePlay.RangeAttack.performed += OnLeftMouseButtonPerformed;
             _gamePlay.RangeAttack.canceled += OnLeftMouseButtonCanceled;
+
             _debug.Console.performed += OnDebugConsolePreformed;
         }
 
@@ -160,6 +162,26 @@ namespace Global.Services.InputViews.Runtime
         private void OnDebugConsolePreformed(InputAction.CallbackContext context)
         {
             DebugConsolePreformed?.Invoke();
+        }
+
+        private void Update()
+        {
+            if (Application.isMobilePlatform == true)
+            {
+                var touches = Input.touches;
+
+                _isLeftMouseButtonPressed = false;
+
+                if (touches.Length < 1)
+                    return;
+                
+                _position = touches[0].rawPosition;
+                _isLeftMouseButtonPressed = true;
+            }
+            else
+            {
+                _position = Mouse.current.position.ReadValue();
+            }
         }
     }
 }
