@@ -38,7 +38,7 @@ namespace GamePlay.Paint.Canvases.Runtime
             builder.RegisterComponent(root.View)
                 .As<IPaintCanvasView>();
             
-            builder.RegisterComponent(root.Borderses)
+            builder.RegisterComponent(root.Borders)
                 .As<IPaintCanvasBorders>();
         }
     }

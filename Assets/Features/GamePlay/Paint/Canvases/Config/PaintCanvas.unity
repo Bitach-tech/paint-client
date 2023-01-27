@@ -443,6 +443,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _sprite: {fileID: 918120339}
   _background: {fileID: 2036938295}
+  _linesRoot: {fileID: 1985173712}
 --- !u!1 &1851085434
 GameObject:
   m_ObjectHideFlags: 0
@@ -474,7 +475,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _lineFactory: {fileID: 1985173714}
   _view: {fileID: 918120340}
-  _borderses: {fileID: 133842669}
+  _borders: {fileID: 133842669}
 --- !u!4 &1851085436
 Transform:
   m_ObjectHideFlags: 0

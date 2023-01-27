@@ -202,7 +202,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 31
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_TargetDisplay: 0
 --- !u!224 &808019639
 RectTransform:
@@ -241,6 +241,7 @@ MonoBehaviour:
   _selectorPrefab: {fileID: 1773775598, guid: 358f872ffd75a654389c02d12b61fdb9, type: 3}
   _body: {fileID: 808019635}
   _selectorsRoot: {fileID: 1287922869}
+  _freeCount: 3
 --- !u!1 &1201982948
 GameObject:
   m_ObjectHideFlags: 0

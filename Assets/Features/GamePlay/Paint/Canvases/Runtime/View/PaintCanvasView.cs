@@ -9,6 +9,7 @@ namespace GamePlay.Paint.Canvases.Runtime.View
     {
         [SerializeField] private SpriteRenderer _sprite;
         [SerializeField] private GameObject _background;
+        [SerializeField] private GameObject _linesRoot;
         
         private void Awake()
         {
@@ -19,6 +20,7 @@ namespace GamePlay.Paint.Canvases.Runtime.View
         {
             _sprite.gameObject.SetActive(true);
             _background.SetActive(true);
+            _linesRoot.SetActive(true);
             _sprite.sprite = image.Image;
         }
 
@@ -26,6 +28,7 @@ namespace GamePlay.Paint.Canvases.Runtime.View
         {
             _sprite.gameObject.SetActive(false);
             _background.SetActive(false);
+            _linesRoot.SetActive(false);
         }
     }
 }

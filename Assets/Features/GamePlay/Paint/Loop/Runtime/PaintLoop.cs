@@ -1,7 +1,9 @@
-﻿using GamePlay.Paint.Canvases.Runtime.View;
+﻿using System.Collections;
+using GamePlay.Paint.Canvases.Runtime.View;
 using GamePlay.Paint.ImageStorage.Runtime;
 using GamePlay.Paint.UI.ColorSelections.Runtime;
 using GamePlay.Paint.UI.ToolSelections.Runtime;
+using Global.Services.ServiceSDK.Advertisment.Abstract;
 using Global.Services.UiStateMachines.Runtime;
 using UnityEngine;
 using VContainer;
@@ -17,8 +19,10 @@ namespace GamePlay.Paint.Loop.Runtime
             IColorSelectionUI colorSelection,
             IToolSelectionUI toolSelection,
             IPaintCanvasView canvasView,
+            IAds ads,
             UiConstraints constraints)
         {
+            _ads = ads;
             _canvasView = canvasView;
             _uiStateMachine = uiStateMachine;
             _toolSelection = toolSelection;
@@ -32,6 +36,9 @@ namespace GamePlay.Paint.Loop.Runtime
         private UiConstraints _constraints;
         private IUiStateMachine _uiStateMachine;
         private IPaintCanvasView _canvasView;
+        private IAds _ads;
+
+        private readonly WaitForSeconds _wait = new(180f);
 
         public UiConstraints Constraints => _constraints;
         public string Name => "Paint";
@@ -42,6 +49,7 @@ namespace GamePlay.Paint.Loop.Runtime
             _colorSelection.Open();
             _toolSelection.Open();
             _canvasView.Construct(image);
+            StartCoroutine(ShowAd());
         }
 
         public void Recover()
@@ -50,7 +58,18 @@ namespace GamePlay.Paint.Loop.Runtime
 
         public void Exit()
         {
+            StopAllCoroutines();
             _canvasView.Disable();
+        }
+
+        private IEnumerator ShowAd()
+        {
+            while (gameObject.activeSelf == true)
+            {
+                yield return _wait;
+                
+                _ads.ShowInterstitial();
+            }
         }
     }
 }

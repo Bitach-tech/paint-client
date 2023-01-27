@@ -2,7 +2,6 @@
 using GamePlay.Paint.Canvases.Runtime.Lines;
 using GamePlay.Paint.Canvases.Runtime.View;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace GamePlay.Paint.Canvases.Runtime
 {
@@ -11,10 +10,10 @@ namespace GamePlay.Paint.Canvases.Runtime
     {
         [SerializeField] private LineFactory _lineFactory;
         [SerializeField] private PaintCanvasView _view;
-        [FormerlySerializedAs("_borders")] [SerializeField] private Borders.PaintCanvasBorders _borderses;
+        [SerializeField] private PaintCanvasBorders _borders;
         
         public LineFactory LineFactory => _lineFactory;
         public PaintCanvasView View => _view;
-        public Borders.PaintCanvasBorders Borderses => _borderses;
+        public PaintCanvasBorders Borders => _borders;
     }
 }
