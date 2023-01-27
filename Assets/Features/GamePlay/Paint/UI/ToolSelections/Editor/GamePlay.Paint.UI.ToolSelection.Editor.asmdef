@@ -1,7 +1,19 @@
-﻿{
-  "name": "GamePlay.Paint.UI.ToolSelection.Editor",
-  "references": [
-    "GUID:d945054fb520ae0408f2ec087ffa5163",
-    "GUID:48cb762a43e14d388fee1f282c865d8d"
-  ]
+{
+    "name": "GamePlay.Paint.UI.ToolSelection.Editor",
+    "rootNamespace": "",
+    "references": [
+        "GUID:d945054fb520ae0408f2ec087ffa5163",
+        "GUID:48cb762a43e14d388fee1f282c865d8d"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
 }

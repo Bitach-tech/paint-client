@@ -48,6 +48,7 @@ namespace GamePlay.Paint.UI.ToolSelections.Runtime
         {
             _uiStateMachine.EnterAsStack(this);
             _body.SetActive(true);
+            _current = null;
         }
 
         public void Exit()

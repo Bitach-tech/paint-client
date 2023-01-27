@@ -1,4 +1,4 @@
-﻿using System;
+﻿using System.Collections.Generic;
 using GamePlay.Paint.ImageStorage.Runtime;
 using UnityEngine;
 
@@ -22,6 +22,14 @@ namespace GamePlay.Paint.Canvases.Runtime.View
             _background.SetActive(true);
             _linesRoot.SetActive(true);
             _sprite.sprite = image.Image;
+
+            var lines = new List<Transform>();
+            
+            for (var i = 0; i < _linesRoot.transform.childCount; i++)
+                lines.Add(_linesRoot.transform.GetChild(i));
+
+            foreach (var line in lines)
+                Destroy(line.gameObject);
         }
 
         public void Disable()
