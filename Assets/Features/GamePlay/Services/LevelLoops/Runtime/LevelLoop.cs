@@ -73,12 +73,13 @@ namespace GamePlay.Services.LevelLoops.Runtime
 
         private void OnPlayClicked(PlayClickEvent data)
         {
-            _ads.ShowInterstitial();
             _paintLoop.Open(data.Image);
         }
 
         private void OnMenuClicked(MenuRequestEvent data)
         {
+            _ads.ShowInterstitial();
+
             _menuUI.Open();
         }
     }
