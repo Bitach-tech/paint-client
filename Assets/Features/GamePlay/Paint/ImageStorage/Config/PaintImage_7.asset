@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0f62d8455664822990f81cb111f9d40, type: 3}
   m_Name: PaintImage_7
   m_EditorClassIdentifier: 
-  _image: {fileID: 21300000, guid: 156c77c27ef62fc4dbb72dc34d9c9031, type: 3}
+  _image: {fileID: 21300000, guid: b255e1cc4e35fea46ba9e4d5e74ee684, type: 3}
